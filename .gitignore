@@ -1,0 +1,20 @@
+# Ignorar entornos virtuales
+venv/
+backend/venv/
+
+# Ignorar variables sensibles
+backend/.env
+frontend/.env
+
+# Ignorar dependencias (ejemplo para Node.js en frontend)
+frontend/node_modules/
+
+# Ignorar archivos de configuración locales
+*.pyc
+__pycache__/
+.env
+.DS_Store
+
+# Ignorar bases de datos locales o archivos de prueba
+*.sqlite3
+*.log
