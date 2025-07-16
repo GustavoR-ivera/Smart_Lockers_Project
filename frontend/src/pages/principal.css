@@ -2,22 +2,28 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     border-radius: 10px;
     border: 1px solid #ccc;
     width: 100%;
 }
 
+
+
 .principal .izq { 
     width: 30%;
-    height: 70%;
     padding: 20px;
 
 }
 
+.principal .izq .name {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
 .principal .separador
 {
+    margin-top: 55px;
     width: 1px;
     background-color: #ccc;
     height: 85%;

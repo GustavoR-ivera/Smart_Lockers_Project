@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from mqtt_client import start_mqtt
-from API import usuarios
+from API import usuarios, prescripciones, citas
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -33,3 +33,9 @@ app.add_middleware(
 
 #usar las rutas del modulo usuarios
 app.include_router(usuarios.router, prefix="/usuarios", tags=["usuarios"])
+#prescripciones
+app.include_router(prescripciones.router, prefix="/prescripciones", tags=["prescripciones"])
+#citas
+app.include_router(citas.router, prefix="/citas", tags=["citas"])
+
+

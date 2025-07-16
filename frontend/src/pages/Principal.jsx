@@ -23,6 +23,9 @@ const Principal = () => {
     <div className="principal">
       {/* Panel izquierdo */}
       <div className="izq">
+        <div className="name">
+          <p>Smart Locker System</p>
+        </div>
         <CheckID
           success={manejarValidacionExitosa}
           failure={manejarValidacionFallida}

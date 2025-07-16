@@ -22,6 +22,7 @@ const CheckID = ({ success, failure }) => {
         failure();
         setWarning("Usuario no encontrado");
       } else {
+        failure();
         setError("Error consultando usuario");
         console.error(error);
       }
@@ -44,7 +45,7 @@ const CheckID = ({ success, failure }) => {
         <button onClick={handleClick}>Validar</button>
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {warning && <p style={{ color: "orange" }}>{warning}</p>}
+      {warning && <p style={{ color: "blue" }}>{warning}</p>}
     </div>
   );
 };
