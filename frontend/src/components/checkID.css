@@ -1,0 +1,42 @@
+.check-id {
+    font-size: 25px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 20px;
+
+}
+
+.check-id p {
+    font-size: 20px;
+}
+
+.check-id .form{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center ;
+}
+
+.check-id input {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.check-id button {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    transition: background-color 0.2s;
+            cursor: pointer;
+
+    }
+
+    .check-id button:active {
+        background-color: #b3d4fc;
+    }
