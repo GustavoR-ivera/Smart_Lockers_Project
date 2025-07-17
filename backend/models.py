@@ -41,7 +41,7 @@ class Casillero(Base):
     temperatura = Column(Float, nullable=True)
     humedad = Column(Float, nullable=True)
     objeto_detectado = Column(Boolean, default=False, nullable=True)
-    estado = Column(String, default="disponible", nullable=True)
+    estado = Column(String, default="disponible", nullable=True)    
     created_at = Column(DateTime, server_default=func.now())
 
     citas = relationship("Cita", back_populates="casillero")

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from models import Cita
+from models import Cita, Prescripcion, Casillero
 from database import SessionLocal
 from datetime import datetime
 import random
@@ -57,11 +57,21 @@ def consultar_citas_por_prescripcion(usuario_id: int, prescripcion_id: int, db: 
 
 # validar citas agendadas para un usuario 
 @router.get("/consultar/{usuario_id}")
-def consultar_citas(usuario_id: int, db: Session = Depends(get_db)):
+def consultar_citas_con_detalles(usuario_id: int, db: Session = Depends(get_db)):
     try:
-        #consulta citas agendadas
-        citas = db.query(Cita).filter(Cita.usuario_id == usuario_id).all()
-        return citas
+        citas = db.query(Cita).filter(Cita.usuario_id == usuario_id).join(Casillero, Cita.casillero_id == Casillero.id).join(Prescripcion, Cita.prescripcion_id == Prescripcion.id).with_entities(
+                Cita.id,
+                Cita.fecha_hora,
+                Cita.lugar,
+                Cita.codigo,
+                Prescripcion.descripcion.label("prescripcion"),
+                Cita.estado,
+                Casillero.temperatura.label("temperatura"),
+                Casillero.humedad.label("humedad")
+            ).all()
+        citas_list = [dict(row._asdict()) for row in citas]
+        return citas_list    
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Error al consultar citas: " + str(e))
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
 

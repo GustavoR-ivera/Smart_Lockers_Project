@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ee0a0a;
+}
+
+.container .map {
+  width: 80%;       /* o 100% si prefieres */
+  height: 300px;    /* define altura explícita */
+  margin-top: 5px;
+    border: 1px solid #ee0a0a;
+
+}
+
+

@@ -6,8 +6,10 @@ const CheckID = ({ success, failure }) => {
   const [documento, setDocumento] = useState("");
   const [error, setError] = useState("");
   const [warning, setWarning] = useState("");
+  const [user_name, setUser_name] = useState("");
 
   const handleClick = async () => {
+    setUser_name("");
     setError("");
     setWarning(""); // limpia mensajes previos
     try {
@@ -18,6 +20,7 @@ const CheckID = ({ success, failure }) => {
       if (resultado.valid == true) {
         //comparte el id del usuario para proceder a consultar su info
         success(resultado.usuario_id); // notifica a Principal.jsx
+        setUser_name(resultado.nombre);
       } else if (resultado.valid == false) {
         failure();
         setWarning("Usuario no encontrado");
@@ -46,6 +49,9 @@ const CheckID = ({ success, failure }) => {
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {warning && <p style={{ color: "blue" }}>{warning}</p>}
+      {user_name && (
+        <p style={{ color: "green" }}>Usuario encontrado: {user_name}</p>
+      )}
     </div>
   );
 };

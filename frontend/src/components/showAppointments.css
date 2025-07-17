@@ -1,0 +1,19 @@
+.container{
+    padding: 20px;
+}
+
+.container .table{
+    text-decoration: none;
+    padding: 20px;
+    border-collapse: collapse;
+    }
+
+    .container .table td, 
+    .container .table th {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+
+.container .table thead{
+    background-color: #f3faf3;
+}

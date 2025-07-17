@@ -22,12 +22,12 @@ const ShowAppointments = ({ user_id }) => {
   }, [user_id]);
 
   return (
-    <div>
+    <div className="container">
       <p>Citas agendadas</p>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       {citas.length > 0 ? (
-        <table border="1" cellPadding="5">
+        <table className="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -46,7 +46,11 @@ const ShowAppointments = ({ user_id }) => {
                 <td>{cita.id}</td>
                 <td>{new Date(cita.fecha_hora).toLocaleString()}</td>
                 <td>{cita.lugar}</td>
-                <td>{cita.codigo}</td>
+                <td style={{ color: "green" }}>{cita.codigo}</td>
+                <td>{cita.prescripcion}</td>
+                <td style={{ color: "orange" }}>{cita.estado}</td>
+                <td>{cita.temperatura}</td>
+                <td>{cita.humedad}</td>
               </tr>
             ))}
           </tbody>
