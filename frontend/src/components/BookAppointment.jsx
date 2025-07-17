@@ -4,6 +4,7 @@ import {
   makeAppointment,
   getAppointmentsByPrescription,
 } from "../services/api";
+import "./bookAppointment.css";
 
 const BookAppointment = ({ user_id }) => {
   const [prescripciones, setPrescripciones] = useState([]);
@@ -65,10 +66,10 @@ const BookAppointment = ({ user_id }) => {
   };
 
   return (
-    <div>
-      <h3>Agendar cita</h3>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="container">
+      <p>Ingresa los datos</p>
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="fecha">
           <label>Fecha y hora:</label>
           <input
             type="datetime-local"
@@ -78,7 +79,7 @@ const BookAppointment = ({ user_id }) => {
           />
         </div>
 
-        <div>
+        <div className="prescripcion">
           <label>Prescripción:</label>
           <select
             value={prescripcionSeleccionada}
@@ -94,7 +95,7 @@ const BookAppointment = ({ user_id }) => {
           </select>
         </div>
 
-        <div>
+        <div className="lugar">
           <label>Lugar:</label>
           <select value={lugar} onChange={(e) => setLugar(e.target.value)}>
             {lugaresDisponibles.map((l, idx) => (

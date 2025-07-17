@@ -46,6 +46,32 @@ export const getAppointmentsByPrescription = async (
   }
 };
 
+//metodo para consultar citas agendadas de un usuario
+export const getAppointmentsByUser = async (user_id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/citas/consultar/${user_id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("api.js, Error consultando las citas del usuario:", error);
+    return error;
+  }
+};
+
+//metodo para consultar citas agendadas de un usuario
+export const getPrescriptionByID = async (prescripcion_id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/citas/consultar/prescripcion_id/${prescripcion_id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("api.js, Error consultando la prescripcion", error);
+    return error;
+  }
+};
+
 // metodo para agendar cita de recolección
 export const makeAppointment = async ({
   usuario_id,

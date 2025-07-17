@@ -55,3 +55,13 @@ def consultar_citas_por_prescripcion(usuario_id: int, prescripcion_id: int, db: 
         raise HTTPException(status_code=500, detail="Error al consultar citas: " + str(e))
 
 
+# validar citas agendadas para un usuario 
+@router.get("/consultar/{usuario_id}")
+def consultar_citas(usuario_id: int, db: Session = Depends(get_db)):
+    try:
+        #consulta citas agendadas
+        citas = db.query(Cita).filter(Cita.usuario_id == usuario_id).all()
+        return citas
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al consultar citas: " + str(e))
+
