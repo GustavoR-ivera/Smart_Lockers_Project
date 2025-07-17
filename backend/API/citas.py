@@ -43,3 +43,15 @@ def agendar_cita(usuario_id: int, fecha_hora: datetime, lugar: str, prescripcion
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail="Error al agendar la cita: " + str(e))
+    
+# validar si el usuario tiene una cita agendada para una prescripcion especifica
+@router.get("/consultar/{usuario_id}/{prescripcion_id}")
+def consultar_citas_por_prescripcion(usuario_id: int, prescripcion_id: int, db: Session = Depends(get_db)):
+    try:
+        #consulta citas agendadas para una prescripcion
+        citas = db.query(Cita).filter((Cita.usuario_id == usuario_id) & (Cita.prescripcion_id == prescripcion_id)).all()
+        return citas
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al consultar citas: " + str(e))
+
+

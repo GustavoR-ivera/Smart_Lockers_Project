@@ -17,3 +17,58 @@ export const getUserByID = async (documento) => {
 };
 
 //todo
+//metodo para consultar prescripciones medicas del usuario a partir del user_id
+export const getPrescriptionsByUserID = async (user_id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/prescripciones/consultar/${user_id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("api.js, Error validando prescripciones del usuario:", error);
+    return error;
+  }
+};
+
+//metodo para consultar citas agendadas de un usuario para una prescripción especifica
+export const getAppointmentsByPrescription = async (
+  user_id,
+  prescripcion_id
+) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/citas/consultar/${user_id}/${prescripcion_id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("api.js, Error validando prescripciones del usuario:", error);
+    return error;
+  }
+};
+
+// metodo para agendar cita de recolección
+export const makeAppointment = async ({
+  usuario_id,
+  fecha_hora,
+  lugar,
+  prescripcion_id,
+}) => {
+  try {
+    const response = await axios.post(
+      `${API_BASE_URL}/citas/agendar`,
+      null, // no se envian en el cuerpo, se envian como query params
+      {
+        params: {
+          usuario_id,
+          fecha_hora,
+          lugar,
+          prescripcion_id,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("api.js, Error agendando cita:", error);
+    throw error;
+  }
+};
