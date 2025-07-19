@@ -2,6 +2,7 @@ import { useState } from "react";
 import BookAppointment from "./BookAppointment";
 import ShowAppointments from "./ShowAppointments";
 import ShowAuthorizedSites from "./ShowAuthorizedSites";
+import Dashboard from "./Dashboard";
 import "./tabsPanel.css";
 
 const TabsPanel = ({ user_id }) => {
@@ -13,6 +14,7 @@ const TabsPanel = ({ user_id }) => {
     if (tabSeleccionada === "show-apps")
       return <ShowAppointments user_id={user_id} />;
     if (tabSeleccionada === "show-auth") return <ShowAuthorizedSites />;
+    if (tabSeleccionada === "dashboard") return <Dashboard />;
   };
 
   return (
@@ -23,6 +25,9 @@ const TabsPanel = ({ user_id }) => {
         </button>
         <button onClick={() => setTabSeleccionada("show-apps")}>
           Ver citas
+        </button>
+        <button onClick={() => setTabSeleccionada("dashboard")}>
+          Dashboard
         </button>
         <button onClick={() => setTabSeleccionada("show-auth")}>
           Ver sitios de recolección

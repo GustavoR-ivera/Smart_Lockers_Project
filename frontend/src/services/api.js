@@ -46,6 +46,20 @@ export const getAppointmentsByPrescription = async (
   }
 };
 
+//metodo para traer los datos medidos por casillero
+export const getDashboardData = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/dashboard/data/`);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "api.js, Error trayendo datos de mediciones del casillero:",
+      error
+    );
+    return error;
+  }
+};
+
 //metodo para consultar citas agendadas de un usuario
 export const getAppointmentsByUser = async (user_id) => {
   try {

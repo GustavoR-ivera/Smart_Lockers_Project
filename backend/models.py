@@ -12,6 +12,7 @@ class Data(Base):
     # relacion de campos de la tabla
     id = Column(Integer, primary_key=True, index=True)
     temperature = Column(Float, nullable=False)
+    humidity = Column(Float, nullable=False)
     created_at = Column(TIMESTAMP, server_default=func.now())
 
 
