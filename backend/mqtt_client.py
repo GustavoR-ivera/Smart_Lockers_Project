@@ -30,7 +30,7 @@ def insert_data(data):
     db.add(data)
 
     #actualizar estado de la cita (la unica agendada)
-    if estado_recoleccion:
+    if objeto:
         # Buscar la única cita pendiente del unico casillero
         cita = db.query(Cita).filter(
             Cita.estado == "pendiente"

@@ -67,7 +67,7 @@ class Cita(Base):
     id = Column(Integer, primary_key=True)
     fecha_hora = Column(DateTime, nullable=False)
     lugar = Column(String, nullable=False)
-    codigo = Column(String(6), nullable=False)
+    codigo = Column(String(20), nullable=False)
     estado = Column(String, default="pendiente")
     created_at = Column(DateTime, server_default=func.now())
 

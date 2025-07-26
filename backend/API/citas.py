@@ -20,7 +20,7 @@ def agendar_cita(usuario_id: int, fecha_hora: datetime, lugar: str, prescripcion
         
     #id casillero, por defecto se indica el numero1
     # Generar código de recolección
-    codigo_acceso = str(random.randint(100000, 999999))
+    #codigo_acceso = str(random.randint(100000, 999999))
 
     # Registrar cita
     nueva_cita = Cita(
@@ -29,7 +29,7 @@ def agendar_cita(usuario_id: int, fecha_hora: datetime, lugar: str, prescripcion
         prescripcion_id=prescripcion_id,
         casillero_id = 1,
         fecha_hora=fecha_hora,
-        codigo=codigo_acceso
+        codigo="0x035dd00d"
     )
     try:
         db.add(nueva_cita)
@@ -38,7 +38,7 @@ def agendar_cita(usuario_id: int, fecha_hora: datetime, lugar: str, prescripcion
 
         return {
             "message": "Cita agendada exitosamente.",
-            "codigo_acceso": codigo_acceso
+            "codigo_acceso": "0x035dd00d"
         }
     except Exception as e:
         db.rollback()
